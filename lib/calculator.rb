@@ -1,3 +1,5 @@
+# lib/calculator.rb
+
 require_relative 'calculator/calculator_state'
 require_relative 'calculator/initialized_state'
 require_relative 'calculator/operator_state'
@@ -34,7 +36,7 @@ module J2FunOnly
 
     def set_state(state)
       @state = state
-      @state.execute
+      @state.execute # может нам надо что-то сделать после смены статуса
     end
 
     def set_operand(value)

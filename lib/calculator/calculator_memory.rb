@@ -1,3 +1,5 @@
+# lib/calculator/calculator_memory.rb
+
 module J2FunOnly
   class CalculatorMemory
     def initialize(calc)
