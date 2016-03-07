@@ -3,6 +3,7 @@ require_relative 'calculator/initialized_state'
 require_relative 'calculator/operator_state'
 require_relative 'calculator/operand_state'
 require_relative 'calculator/calculate_state'
+require_relative 'calculator/calculator_memory'
 
 module J2FunOnly
   class Calculator
@@ -14,6 +15,7 @@ module J2FunOnly
       @operator_state = OperatorState.new self
       @operand_state = OperandState.new self
       @calculate_state = CalculateState.new self
+      @memory = CalculatorMemory.new self
 
       set_state @initialized_state
     end
@@ -41,6 +43,14 @@ module J2FunOnly
 
     def set_operator(value)
       @state.set_operator value
+    end
+
+    def mem_add
+      @memory.add @result
+    end
+
+    def mem_get
+      @result = @memory.get
     end
 
     def +(value)
