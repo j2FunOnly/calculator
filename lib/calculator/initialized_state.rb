@@ -10,7 +10,8 @@ module J2FunOnly
       @calc.result = 0
     end
 
-    def set_operand(value)
+    def put(value = nil)
+      value = value.to_i if value.is_a? String
       @calc.result = value
       # далее наш калькулятор ожидает ввода оператора
       @calc.set_state @calc.get_operator_state

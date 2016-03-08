@@ -5,19 +5,39 @@ RSpec.describe J2FunOnly::Calculator do
 
   describe 'makes calculations' do
     it 'successfully' do
-      subject.set_operand 5
-      subject.set_operator '+'
-      subject.set_operand 5
-      subject.set_operator '-'
-      subject.set_operand 3
-      expect(subject.result).to eq(5 + 5 - 3) # 7
+      subject.put 5
+      subject.put '+'
+      subject.put 5
+      subject.put '-'
+      subject.put '3'
+      expect(subject.get).to eq(5 + 5 - 3) # 7
     end
 
-    it 'revert to initialized state if operator empty' do
-      subject.set_operand 5
-      subject.set_operator ''
-      expect(subject.state).to eq(:initialized_state)
-      expect(subject.result).to eq(0)
+    it 'nothing happen if operator or operand is empty' do
+      subject.put 5
+      subject.put
+      expect(subject.state).to eq(:operator_state)
+      expect(subject.get).to eq(5)
+
+      subject.put '+'
+      subject.put '  '
+      expect(subject.state).to eq(:operand_state)
+      expect(subject.get).to eq(5)
+    end
+
+    it 'revert to initialized state with command' do
+      subject.put 5
+      subject.put '+'
+      subject.put 5
+      subject.mem_add
+      old_mem = subject.get
+      subject.reset
+
+      expect(subject.state).to eq :initialized_state
+      expect(subject.get).to eq 0
+
+      subject.mem_get
+      expect(subject.get).to eq old_mem
     end
   end
 end

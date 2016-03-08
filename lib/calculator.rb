@@ -9,7 +9,8 @@ require_relative 'calculator/calculator_memory'
 
 module J2FunOnly
   class Calculator
-    attr_accessor :operand, :result, :operator
+    attr_accessor :operand, :operator
+    attr_writer :result
 
     def initialize
       @result = 0
@@ -47,12 +48,12 @@ module J2FunOnly
       @state.state
     end
 
-    def set_operand(value)
-      @state.set_operand value
+    def put(value = nil)
+      @state.put value
     end
 
-    def set_operator(value)
-      @state.set_operator value
+    def get
+      @result
     end
 
     def mem_add
@@ -62,6 +63,12 @@ module J2FunOnly
     def mem_get
       @result = @memory.get
     end
+
+    def reset
+      set_state get_initialized_state
+    end
+
+    private
 
     def +(value)
       @result += value

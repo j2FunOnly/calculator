@@ -6,10 +6,10 @@ RSpec.describe J2FunOnly::Calculator do
 
   describe 'makes addition' do
     it 'successfully' do
-      subject.set_operand 5
-      subject.set_operator '+'
-      subject.set_operand 5
-      expect(subject.result).to eq(5 + 5)
+      subject.put 5
+      subject.put '+'
+      subject.put 5
+      expect(subject.get).to eq(5 + 5)
     end
   end
 end
