@@ -69,6 +69,8 @@ module J2FunOnly
 
     def /(value)
       @result /= value
+    rescue ZeroDivisionError
+      @result /= 1
     end
   end
 end
