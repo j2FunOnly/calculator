@@ -12,5 +12,12 @@ RSpec.describe J2FunOnly::Calculator do
       subject.set_operand 3
       expect(subject.result).to eq(5 + 5 - 3) # 7
     end
+
+    it 'revert to initialized state if operator empty' do
+      subject.set_operand 5
+      subject.set_operator ''
+      expect(subject.state).to eq(:initialized_state)
+      expect(subject.result).to eq(0)
+    end
   end
 end

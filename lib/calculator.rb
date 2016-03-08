@@ -22,6 +22,10 @@ module J2FunOnly
       set_state @initialized_state
     end
 
+    def get_initialized_state
+      @initialized_state
+    end
+
     def get_operator_state
       @operator_state
     end

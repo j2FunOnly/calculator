@@ -7,9 +7,13 @@ module J2FunOnly
     end
 
     def set_operator(value)
-      @calc.operator = value
-      # ждем ввода операнда
-      @calc.set_state @calc.get_operand_state
+      if value.empty?
+        @calc.set_state @calc.get_initialized_state
+      else
+        @calc.operator = value
+        # ждем ввода операнда
+        @calc.set_state @calc.get_operand_state
+      end
     end
   end
 end

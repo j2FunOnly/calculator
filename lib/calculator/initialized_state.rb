@@ -6,6 +6,10 @@ module J2FunOnly
       @calc = calc
     end
 
+    def execute
+      @calc.result = 0
+    end
+
     def set_operand(value)
       @calc.result = value
       # далее наш калькулятор ожидает ввода оператора
