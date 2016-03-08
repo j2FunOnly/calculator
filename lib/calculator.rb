@@ -39,6 +39,10 @@ module J2FunOnly
       @state.execute # может нам надо что-то сделать после смены статуса
     end
 
+    def state
+      @state.state
+    end
+
     def set_operand(value)
       @state.set_operand value
     end
