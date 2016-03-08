@@ -11,6 +11,7 @@ module J2FunOnly
       return unless value.is_a? String
       value.strip!
       return unless value.size == 1
+      return unless %w(+ - * /).include? value
 
       @calc.operator = value
       # ждем ввода операнда

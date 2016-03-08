@@ -18,7 +18,7 @@ module J2FunOnly
       @operator_state = OperatorState.new self
       @operand_state = OperandState.new self
       @calculate_state = CalculateState.new self
-      @memory = CalculatorMemory.new self
+      @memory = CalculatorMemory.new
 
       set_state @initialized_state
     end
@@ -62,10 +62,15 @@ module J2FunOnly
 
     def mem_get
       @result = @memory.get
+      set_state get_operator_state
     end
 
     def reset
       set_state get_initialized_state
+    end
+
+    def calculate
+      send operator, operand
     end
 
     private
@@ -82,6 +87,10 @@ module J2FunOnly
       @result /= value
     rescue ZeroDivisionError
       @result /= 1
+    end
+
+    def *(value)
+      @result *= value
     end
   end
 end

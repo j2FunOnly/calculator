@@ -2,8 +2,7 @@
 
 module J2FunOnly
   class CalculatorMemory
-    def initialize(calc)
-      @calc = calc
+    def initialize
       @result = 0
     end
 

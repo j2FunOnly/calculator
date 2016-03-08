@@ -16,8 +16,9 @@ RSpec.describe J2FunOnly::Calculator do
       subject.put 8
       expect(subject.get).to eq(2 + 8) # 10
       subject.mem_add # 2 + 10
+      subject.mem_add # 12 + 10
       subject.mem_get
-      expect(subject.get).to eq(12)
+      expect(subject.get).to eq(22)
     end
   end
 end

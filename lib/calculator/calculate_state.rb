@@ -7,7 +7,7 @@ module J2FunOnly
     end
 
     def execute
-      @calc.send @calc.operator, @calc.operand
+      @calc.calculate
       # и все сначала
       @calc.set_state @calc.get_operator_state
     end

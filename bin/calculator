@@ -2,15 +2,53 @@
 
 require 'calculator'
 
-puts 'Calculator started'
+class Runner
+  def initialize
+    @calc = J2FunOnly::Calculator.new
+  end
 
-calc = J2FunOnly::Calculator.new
+  def run
+    while true
+      print prompt
+      begin
+        op = gets
+      rescue Interrupt
+        op = 'q'
+      end
+      case op.strip
+      when 'r'
+        print 'Result: '
+        puts @calc.get
+      when 'x'
+        @calc.reset
+      when 'q'
+        puts 'See you soon!'
+        exit
+      when 'mp'
+        @calc.mem_add
+        puts 'Added to memory'
+      when 'mr'
+        @calc.mem_get
+      else
+        @calc.put op
+      end
 
-print 'Type operand: '
-calc.put gets
-print 'Type operator: '
-calc.put gets
-print 'Type operand: '
-calc.put gets
-print 'Result: '
-puts calc.get
+    end
+  end
+
+  def prompt
+    case @calc.state
+    when :initialized_state
+      "Calculator started. r - result, x - reset, q - quit.\n"
+    when :operator_state
+      "#{@calc.get} "
+    when :operand_state
+      "#{@calc.get} #{@calc.operator} "
+    else
+      $stderr.puts 'Something gone wrong!'
+      exit
+    end
+  end
+end
+
+Runner.new.run
