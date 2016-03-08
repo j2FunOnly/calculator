@@ -39,7 +39,8 @@ class Runner
   def prompt
     case @calc.state
     when :initialized_state
-      "Calculator started. r - result, x - reset, q - quit.\n"
+      "Calculator started.\n\
+      \rr - result, x - reset, mp - add to mem, mr - get from mem, q - quit.\n"
     when :operator_state
       "#{@calc.get} "
     when :operand_state
