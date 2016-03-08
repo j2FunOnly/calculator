@@ -7,12 +7,14 @@ module J2FunOnly
     end
 
     def execute
-      @calc.result = 0
+      @calc.set_result 0
     end
 
     def put(value = nil)
-      value = value.to_i if value.is_a? String
-      @calc.result = value
+      value = sanitize_operand value
+      return if value.nil?
+
+      @calc.set_result value
       # далее наш калькулятор ожидает ввода оператора
       @calc.set_state @calc.get_operator_state
     end

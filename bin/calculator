@@ -10,12 +10,10 @@ class Runner
   def run
     while true
       print prompt
-      begin
-        op = gets
-      rescue Interrupt
-        op = 'q'
-      end
-      case op.strip
+
+      cmd = get_command
+
+      case cmd.strip
       when 'r'
         print 'Result: '
         puts @calc.get
@@ -24,23 +22,25 @@ class Runner
       when 'q'
         puts 'See you soon!'
         exit
-      when 'mp'
+      when 'mw'
         @calc.mem_add
         puts 'Added to memory'
       when 'mr'
-        @calc.mem_get
+        @calc.mem_result!
       else
-        @calc.put op
+        @calc.put cmd
       end
 
     end
   end
 
+  private
+
   def prompt
     case @calc.state
     when :initialized_state
       "Calculator started.\n\
-      \rr - result, x - reset, mp - add to mem, mr - get from mem, q - quit.\n"
+      \rr - result, x - reset, mw - add to mem, mr - get from mem, q - quit.\n"
     when :operator_state
       "#{@calc.get} "
     when :operand_state
@@ -49,6 +49,14 @@ class Runner
       $stderr.puts 'Something gone wrong!'
       exit
     end
+  end
+
+  def get_command
+    cmd = gets
+  rescue Interrupt
+    cmd = 'q'
+  ensure
+    return cmd
   end
 end
 

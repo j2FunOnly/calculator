@@ -7,12 +7,8 @@ module J2FunOnly
     end
 
     def put(value = nil)
+      value = sanitize_operand value
       return if value.nil?
-
-      if value.is_a? String
-        return if value.strip.empty?
-        value = value.to_i
-      end
 
       @calc.operand = value
       # наконец-то вычисления

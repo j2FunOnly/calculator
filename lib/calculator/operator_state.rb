@@ -7,11 +7,8 @@ module J2FunOnly
     end
 
     def put(value = nil)
+      value = sanitize_operator value
       return if value.nil?
-      return unless value.is_a? String
-      value.strip!
-      return unless value.size == 1
-      return unless %w(+ - * /).include? value
 
       @calc.operator = value
       # ждем ввода операнда

@@ -36,7 +36,7 @@ RSpec.describe J2FunOnly::Calculator do
       expect(subject.state).to eq :initialized_state
       expect(subject.get).to eq 0
 
-      subject.mem_get
+      subject.mem_result!
       expect(subject.get).to eq old_mem
     end
   end
