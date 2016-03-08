@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+ruby -I lib bin/calculator
