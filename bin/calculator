@@ -1,2 +1,16 @@
 #!/usr/bin/env ruby
+
+require 'calculator'
+
 puts 'Calculator started'
+
+calc = J2FunOnly::Calculator.new
+
+print 'Type operand: '
+calc.put gets
+print 'Type operator: '
+calc.put gets
+print 'Type operand: '
+calc.put gets
+print 'Result: '
+puts calc.get

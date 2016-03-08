@@ -9,7 +9,7 @@ module J2FunOnly
     def put(value = nil)
       return if value.nil?
       return unless value.is_a? String
-      return unless value.strip.size == 1
+      return unless value.strip!.size == 1
 
       @calc.operator = value
       # ждем ввода операнда
