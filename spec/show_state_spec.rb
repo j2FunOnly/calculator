@@ -3,7 +3,7 @@ require 'calculator'
 RSpec.describe J2FunOnly::Calculator do
   subject { J2FunOnly::Calculator.new }
 
-  describe 'shows states' do
+  context 'shows states' do
     it 'initialized_state when calculator started' do
       expect(subject.state).to eq(:initialized_state)
     end

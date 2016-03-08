@@ -3,7 +3,7 @@ require 'calculator'
 RSpec.describe J2FunOnly::Calculator do
   subject { J2FunOnly::Calculator.new }
 
-  describe 'makes calculations' do
+  context 'makes calculations' do
     it 'successfully' do
       subject.put 5
       subject.put '+'

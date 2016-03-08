@@ -5,7 +5,7 @@ require 'calculator'
 RSpec.describe J2FunOnly::Calculator do
   subject { J2FunOnly::Calculator.new }
 
-  describe 'works with memory' do
+  context 'works with memory' do
     it 'successfully' do
       subject.put 5
       subject.put '-'
