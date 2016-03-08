@@ -75,7 +75,9 @@ module J2FunOnly
     def reset
       set_state get_initialized_state
     end
-
+    
+    # мне очень не нравится такой подход
+    # как-то опасно, надо придумать что-то другое
     def calculate
       send operator, operand
     end
