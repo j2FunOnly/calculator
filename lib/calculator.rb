@@ -66,5 +66,9 @@ module J2FunOnly
     def -(value)
       @result -= value
     end
+
+    def /(value)
+      @result /= value
+    end
   end
 end
