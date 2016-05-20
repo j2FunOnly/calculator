@@ -8,7 +8,7 @@ rake install:local
 
 ## Usage
 
-calculator to run command line interface
+$ ./calculator
 
 ## License
 
